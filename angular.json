@@ -125,6 +125,9 @@
               "devServerTarget": "test:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
