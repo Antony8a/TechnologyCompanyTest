@@ -1,0 +1,120 @@
+<main>
+    <section class="py-5 text-center container" >
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                    class="bi bi-cpu-fill" viewBox="0 0 16 16">
+                    <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+                    <path
+                        d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z" />
+                </svg>
+                <h1 class="fw-light">TechnologyCompany</h1> <br>
+                <div class="input-group mb-3" >
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" (click)="getCategory('science')">science</a></li>
+                            <li><a class="dropdown-item" (click)="getCategory('education')">education</a></li>
+                            <li><a class="dropdown-item" (click)="getCategory('people')">people</a></li>
+                            <li><a class="dropdown-item" (click)="getCategory('feelings')">feelings</a></li>
+                            <li><a class="dropdown-item" (click)="getCategory('computer')">computer</a></li>
+                            <li><a class="dropdown-item" (click)="getCategory('buildings')">buildings</a></li>
+                        </ul>
+                    </div>
+                    
+                    <input type="text" class="form-control" placeholder="Search input" aria-label="Recipient's username" 
+                        aria-describedby="button-addon2" #textBusqueda (keyup.enter)="getImages(textBusqueda.value)" >
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="getImages(textBusqueda.value)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container" >
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col" *ngFor="let image of images; index as i ">
+                    <div class="card shadow-sm">
+                        <a href="" data-bs-toggle="modal"  data-bs-target="#viewImage">
+                            <img 
+                            style="object-fit: cover;" 
+                            class="bd-placeholder-img card-img-top" 
+                            width="100%" 
+                            height="225" 
+                            src={{image.webformatURL}}
+                            alt="Not found"
+                            (click)="viewPhoto(image.largeImageURL)"
+                            >
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text">{{image.tags}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <span  class="btn btn-sm btn-outline-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                          </svg>
+                                        {{image.views}}</span>
+                                    <span  class="btn btn-sm btn-outline-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="fill: rgb(240, 94, 94);" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                          </svg>
+                                        {{image.likes}}</span>
+                                        
+                                </div>
+                                
+                                <small class="text-muted">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                      </svg>
+                                    {{image.downloads}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="viewImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" >
+      <div class="modal-content ">
+        
+        <div class="modal-body"  style="width: 100%; height:100%; padding: 0;">
+            <img 
+            style="object-fit: cover;" 
+            width="100%" 
+            height="100%" 
+            src={{this.photo}}
+            alt="Not found">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<footer class="text-muted py-5"  >
+    <div class="container" >
+        <p class="float-end mb-1">
+            <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">It was developed using &copy; Bootstrap Customized by Antony Javier Ochoa de Avila!</p>
+    </div>
+</footer>
